@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 
+http://maven.apache.org/xsd/settings-1.0.0.xsd">
+	<mirrors>
+		<mirror>
+			<!--This sends everything else to /public -->
+			<id>nexus</id>
+			<mirrorOf>*</mirrorOf>
+			<url>http://172.25.5.79:7081/nexus/content/groups/public</url>
+		</mirror>
+	</mirrors>
+
+	<profiles>
+		<profile>
+			<id>nexus</id>
+			<!--Enable snapshots for the built in central repo to direct -->
+			<!--all requests to nexus via the mirror -->
+			<repositories>
+				<repository>
+					<id>travelsky</id>
+					<url>http://172.25.5.79:7081/nexus/content/groups/public</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>travelsky</id>
+					<url>http://172.25.5.79:7081/nexus/content/groups/public</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+
+	</profiles>
+
+	<activeProfiles>
+		<!--make the profile active all the time -->
+		<activeProfile>nexus</activeProfile>
+	</activeProfiles>
+
+	<pluginGroups>
+		<pluginGroup>com.travelsky</pluginGroup>
+	</pluginGroups>
+
+	<proxies>
+		<proxy>
+			<active>true</active>
+			<protocol>http</protocol>
+			<nonProxyHosts>172.25.5.79|localhost|127.0.0.1</nonProxyHosts>
+		</proxy>
+	</proxies>
+
+</settings>
