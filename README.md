@@ -4,6 +4,7 @@ maven-plugin项目
 
 使用方法:
 1.在pom.xml中的如下位置添加插件
+<?xml version="1.0" encoding="UTF-8"?>
 <build>
   ...
   <plugins>
